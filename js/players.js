@@ -32,9 +32,7 @@ function showPlayers(players) {
                 <div class="col-sm-4">
                     <h4>${player.name}</h4>
                     <p>${player.fullName}</p>
-                    <button type="button" class="btn btn-outline-dark setPlayer" player-id="${
-                      player.pid
-                    }" data-toggle="modal" data-target="#playerProfile">View Profile</button> 
+                    <button type="button" class="btn btn-outline-dark setPlayer" player-id="${player.pid}" data-toggle="modal" data-target="#playerProfile">View Profile</button> 
                 </div>
             </div>    
         `;
@@ -47,7 +45,7 @@ function showPlayers(players) {
 
 function fetchProfile(e) {
   e.preventDefault();
-  const pid = $(this).attr("player-id");
+  const pid = e.currentTarget.getAttribute('player-id');
 
   fetch(`http://cricapi.com/api/playerStats?pid=${pid}&apikey=${apikey}`)
     .then(res => res.json())
@@ -67,31 +65,17 @@ function showProfile(player) {
         <div class="row">
             <div class="col-lg-5 col-sm-12">
                 <div class="text-center text-secondary">
-                    <img src="${
-                      player.imageURL
-                    }" class="rounded mx-auto mb-2 d-block" alt="${
-    player.name
-  }">
+                    <img src="${player.imageURL}" class="rounded mx-auto mb-2 d-block" alt="${player.name}">
                 </div> 
             </div>
 
             <div class="col-lg-7 col-sm-12">
                 <ul class="list-group">
-                    <li class="list-group-item"><p class="lead">Age: ${
-                      player.currentAge ? player.currentAge : ""
-                    }</p></li>
-                    <li class="list-group-item"><p class="lead">Birth: ${
-                      player.born ? player.born : ""
-                    }</p></li>
-                    <li class="list-group-item"><p class="lead">Playing Role: ${
-                      player.playingRole ? player.playingRole : ""
-                    }</p></li>
-                    <li class="list-group-item"><p class="lead">Batting Style: ${
-                      player.battingStyle ? player.battingStyle : ""
-                    }</p></li>
-                    <li class="list-group-item"><p class="lead">Bowling Style: ${
-                      player.bowlingStyle ? player.bowlingStyle : ""
-                    }</p></li>
+                    <li class="list-group-item"><p class="lead">Age: ${player.currentAge ? player.currentAge : ""}</p></li>
+                    <li class="list-group-item"><p class="lead">Birth: ${player.born ? player.born : ""}</p></li>
+                    <li class="list-group-item"><p class="lead">Playing Role: ${player.playingRole ? player.playingRole : ""}</p></li>
+                    <li class="list-group-item"><p class="lead">Batting Style: ${player.battingStyle ? player.battingStyle : ""}</p></li>
+                    <li class="list-group-item"><p class="lead">Bowling Style: ${player.bowlingStyle ? player.bowlingStyle : ""}</p></li>
                 </ul>
             </div>
         </div>
@@ -101,9 +85,7 @@ function showProfile(player) {
   divBio.innerHTML = `
         <h6 class="text-secondary my-3 ml-2">Profile</h6>
         <ul class="list-group">
-            <li class="list-group-item"><p class="lead text-justify">${
-              player.profile
-            }</p></li>
+            <li class="list-group-item"><p class="lead text-justify">${player.profile}</p></li>
         </ul>
     `;
 
@@ -111,9 +93,7 @@ function showProfile(player) {
   divTeams.innerHTML = `
         <h6 class="text-secondary my-3 ml-2">Teams</h6>
         <ul class="list-group">
-            <li class="list-group-item"><p class="lead">${
-              player.majorTeams
-            }</p></li>
+            <li class="list-group-item"><p class="lead">${player.majorTeams}</p></li>
         </ul>
     `;
 

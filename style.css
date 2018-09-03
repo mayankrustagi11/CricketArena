@@ -123,12 +123,18 @@ p.lead {
   .modal-lg {
     max-width: 1080px !important;
   }
+
+  .matchCard {
+    flex-basis: 40%;
+    flex-grow: 0;
+  }
 }
 
-#schedule {
+#schedule,
+#matchResults {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   line-height: 1.7;
   flex-wrap: wrap
 }

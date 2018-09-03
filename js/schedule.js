@@ -1,8 +1,6 @@
 window.onload = fetchSchedule;
 
-function fetchSchedule(e) {
-  e.preventDefault();
-
+function fetchSchedule() {
   fetch(`http://cricapi.com/api/matchCalendar?apikey=${apikey}`)
     .then(res => res.json())
     .then(data => showSchedule(data.data))
