@@ -35,9 +35,9 @@ function showUpcomingMatches(matches) {
                 <p class="lead text-info">Format: ${match.type}</p>
                 <p class="lead text-warning">Match Started: ${match.matchStarted ? "Yes" : "No"}</p>
                 <p class="lead text-secondary">Squad Announced: ${match.squad ? "Yes" : "No"}</p>
-                <p class="lead text-danger">Toss: ${match.toss_winner_team}</p>
-                <p class="lead text-success">Winner: ${match.winner_team}</p>
-                <p class="lead text-primary">Date: ${match.date}</p>
+                <p class="lead text-danger">Toss: ${match.toss_winner_team ? match.toss_winner_team : 'Awaited'}</p>
+                <p class="lead text-success">Winner: ${match.winner_team ? match.winner_team : 'Awaited'}</p>
+                <p class="lead text-primary">Date: ${formatDate(match.date)}</p>
                 <button type="button" class="btn btn-outline-dark setMatch" match-id="${match.unique_id}" data-toggle="modal" data-target="#matchScore">View Score Summary</button>
             `;
 
@@ -55,18 +55,7 @@ function showOldMatches(matches) {
     matches.forEach(match => {
         const div = document.createElement("div");
         div.classList.add("card", "card-body", "mb-3", "mr-2", "bg-light", "matchCard", "text-center");
-        div.innerHTML = `
-                <h4 class="text-dark">${match['team-1']}</h4>
-                <h4 class="text-dark">vs</h4>
-                <h4 class="text-dark">${match['team-2']}</h4>
-                <p class="lead text-info">Format: ${match.type}</p>
-                <p class="lead text-warning">Match Started: ${match.matchStarted ? "Yes" : "No"}</p>
-                <p class="lead text-secondary">Squad Announced: ${match.squad ? "Yes" : "No"}</p>
-                <p class="lead text-danger">Toss: ${match.toss_winner_team}</p>
-                <p class="lead text-success">Winner: ${match.winner_team}</p>
-                <p class="lead text-primary">Date: ${match.date}</p>
-                <button type="button" class="btn btn-outline-dark" match-id="${match.unique_id}" data-toggle="modal" data-target="#matchScore">View Score Summary</button>
-            `;
+        div.innerHTML = ``;
 
         results.appendChild(div);
     });

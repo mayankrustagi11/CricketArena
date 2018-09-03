@@ -1,4 +1,5 @@
-$("header a.scroll-btn").on("click", function () {
+$("header a.scroll-btn").on("click", function (e) {
+    e.preventDefault();
     $("html, body").animate({
             scrollTop: $(".features").offset().top
         },
@@ -21,4 +22,17 @@ function showMessage(message, className) {
 
     /* REMOVE ALERT ELEMENT */
     setTimeout(() => document.querySelector(".alert").remove(), 3000);
+}
+
+function formatDate(inputDate) {
+    let date = new Date(inputDate);
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    day = (day < 10) ? '0' + day : day;
+    month = (month < 10) ? '0' + month : month;
+    date = day + '-' + month + '-' + year;
+
+    return date;
 }
