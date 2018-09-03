@@ -124,3 +124,11 @@ p.lead {
     max-width: 1080px !important;
   }
 }
+
+#schedule {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1.7;
+  flex-wrap: wrap
+}
