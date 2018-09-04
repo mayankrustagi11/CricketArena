@@ -6,6 +6,15 @@ body {
   font-family: "Product Sans, Roboto", arial, sans-serif;
 }
 
+.modal-header {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.modal-body {
+  padding-top: 0 !important;
+}
+
 #showcase {
   background-image: url("../img/background.jpg");
   height: 100vh;
@@ -130,6 +139,7 @@ p.lead {
   }
 }
 
+#results,
 #schedule,
 #matchResults {
   display: flex;

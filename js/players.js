@@ -26,15 +26,11 @@ function showPlayers(players) {
 
   players.forEach(player => {
     const div = document.createElement("div");
-    div.classList.add("card", "card-body", "mb-3");
+    div.classList.add("card", "card-body", "mb-3", "mr-2", "bg-light");
     div.innerHTML = `
-            <div class="row">
-                <div class="col-sm-4">
-                    <h4>${player.name}</h4>
-                    <p>${player.fullName}</p>
-                    <button type="button" class="btn btn-outline-dark setPlayer" player-id="${player.pid}" data-toggle="modal" data-target="#playerProfile">View Profile</button> 
-                </div>
-            </div>    
+          <h4>${player.name}</h4>
+          <p>${player.fullName}</p>
+          <button type="button" class="btn btn-outline-dark setPlayer" player-id="${player.pid}" data-toggle="modal" data-target="#playerProfile">View Profile</button>
         `;
 
     results.appendChild(div);
@@ -63,12 +59,7 @@ function showProfile(player) {
         <h5 class="text-center text-secondary">${player.country}</h5>
         <h6 class="text-secondary my-3 ml-2">Personal Information</h6>
         <div class="row">
-            <div class="col-lg-5 col-sm-12">
-                <div class="text-center text-secondary">
-                    <img src="${player.imageURL}" class="rounded mx-auto mb-2 d-block" alt="${player.name}">
-                </div> 
-            </div>
-
+            <div class="col-lg-5 col-sm-12 playerImage"></div>
             <div class="col-lg-7 col-sm-12">
                 <ul class="list-group">
                     <li class="list-group-item"><p class="lead">Age: ${player.currentAge ? player.currentAge : ""}</p></li>
@@ -85,7 +76,7 @@ function showProfile(player) {
   divBio.innerHTML = `
         <h6 class="text-secondary my-3 ml-2">Profile</h6>
         <ul class="list-group">
-            <li class="list-group-item"><p class="lead text-justify">${player.profile}</p></li>
+            <li class="list-group-item"><p class="lead text-justify">${player.profile ? player.profile : '-'}</p></li>
         </ul>
     `;
 
@@ -871,4 +862,14 @@ function showProfile(player) {
   modalBody.appendChild(divTeams);
   modalBody.appendChild(divBatting);
   modalBody.appendChild(divBowling);
+
+  const img = document.createElement('img');
+  img.classList.add('rounded', 'mx-auto', 'd-block');
+  img.src = player.imageURL;
+
+  img.onload = function () {};
+  img.onerror = function () {
+    img.src = 'img/user.png';
+  };
+  document.querySelector('.playerImage').appendChild(img);
 }
