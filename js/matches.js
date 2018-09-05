@@ -8,14 +8,14 @@ function fetchMatches() {
 }
 
 function fetchUpcomingMatches() {
-    fetch(`http://cricapi.com/api/matches?apikey=${apikey}`)
+    fetch(`https://cricapi.com/api/matches?apikey=${apikey}`)
         .then(res => res.json())
         .then(data => showUpcomingMatches(data.matches))
         .catch(err => console.log(err));
 }
 
 function fetchOldMatches() {
-    fetch(`http://cricapi.com/api/cricket?apikey=${apikey}`)
+    fetch(`https://cricapi.com/api/cricket?apikey=${apikey}`)
         .then(res => res.json())
         .then(data => showOldMatches(data.data))
         .catch(err => console.log(err));
@@ -77,7 +77,7 @@ function fetchScorecard(e) {
     e.preventDefault();
     const id = e.currentTarget.getAttribute('match-id');
 
-    fetch(`http://cricapi.com/api/cricketScore?unique_id=${id}&apikey=${apikey}`)
+    fetch(`https://cricapi.com/api/cricketScore?unique_id=${id}&apikey=${apikey}`)
         .then(res => res.json())
         .then(data => showScorecard(data))
         .catch(err => console.log(err));

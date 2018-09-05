@@ -9,7 +9,7 @@ function fetchPlayers(e) {
     showMessage("Please Enter A Name.", "danger");
     return;
   }
-  fetch(`http://cricapi.com/api/playerFinder?name=${name}&apikey=${apikey}`)
+  fetch(`https://cricapi.com/api/playerFinder?name=${name}&apikey=${apikey}`)
     .then(res => res.json())
     .then(data => showPlayers(data.data))
     .catch(err => console.log(err));
@@ -43,7 +43,7 @@ function fetchProfile(e) {
   e.preventDefault();
   const pid = e.currentTarget.getAttribute('player-id');
 
-  fetch(`http://cricapi.com/api/playerStats?pid=${pid}&apikey=${apikey}`)
+  fetch(`https://cricapi.com/api/playerStats?pid=${pid}&apikey=${apikey}`)
     .then(res => res.json())
     .then(data => showProfile(data))
     .catch(err => console.log(err));
@@ -340,7 +340,7 @@ function showProfile(player) {
 
   const img = document.createElement('img');
   img.classList.add('rounded', 'mx-auto', 'd-block');
-  img.src = player.imageURL;
+  img.src = player.imageURL.replace("http:", "https:");
 
   img.onload = function () {};
   img.onerror = function () {

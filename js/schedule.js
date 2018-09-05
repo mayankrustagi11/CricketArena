@@ -1,7 +1,7 @@
 window.onload = fetchSchedule;
 
 function fetchSchedule() {
-  fetch(`http://cricapi.com/api/matchCalendar?apikey=${apikey}`)
+  fetch(`https://cricapi.com/api/matchCalendar?apikey=${apikey}`)
     .then(res => res.json())
     .then(data => showSchedule(data.data))
     .catch(err => console.log(err));
